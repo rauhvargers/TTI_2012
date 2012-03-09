@@ -2,14 +2,78 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>Saziņas forma</title>
 </head>
 <body>
+	<h1>Saziņas forma</h1>
 	<form action="http://naivist.net/form">
-		<input type="search" name="q" />
-		
-	
-	</form>
+		<fieldset>
+			<legend>Informācija par jums</legend>
+			<p>Šeit jums nāksies atklāt nedaudz vairāk par sevi...</p>
 
+			<p>
+				<label for="firstNameBox">Jūsu vārds:</label> 
+				<input name="firstname" type="text" id="firstNameBox" value="Jānis" size="80" />
+			</p>
+			<p>
+				<label for="ageBox">Vecums:</label> <input type="password" name="age" id="ageBox" />
+			</p>
+			<p>
+				Dzimums. 
+				<input type="radio" name="gender" value="female" id="genderF"/>
+				<label for="genderF">Sieviete</label>
+				
+				 <input type="radio" name="gender" value="male" id="genderM"/> 
+				 <label for="genderM">Vīrietis</label>
+
+			</p>
+
+		</fieldset>
+
+		<fieldset>
+			<legend>Ko jūs vēlaties mums pateikt</legend>
+
+
+			<p>
+				<select name="replytype" multiple="multiple">
+					<option>Lūdzu, izvēlieties informācijas veidu</option>
+					<optgroup label="Man patīk, bet...">
+						<option>Ierosinājums</option>
+					</optgroup>
+
+					<optgroup label="Man te nekas nepatīk!">
+						<option>Sūdzība</option>
+						<option>Sarkastiska piezīme</option>
+						<option>Lamas</option>
+					</optgroup>
+
+				</select>
+			</p>
+
+			<p>
+				Komentārs
+				<textarea rows="10" cols="60" name="comment">
+Sveiki!
+Ar jūsu firmu viss kārtībā!
+Paldies,
+Jānis</textarea>
+			</p>
+
+			<p>
+				Vēlos līdz mūža beigām saņemt mēstules no jums. <input
+					type="checkbox" name="spamOk" value="yes" checked="checked" />
+
+			</p>
+			<p>
+				<input type="date" />
+			</p>
+			<p>
+				Ekrāna attēls <input type="file" name="screenshot" />
+			</p>
+			
+		</fieldset>
+
+		<input type="submit" value="Iesūtīt atsauksmi" />
+	</form>
 </body>
 </html>
