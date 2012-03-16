@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+
+@media print {
+	/*Drukas versijā nav vērts iekļaut attēlus*/
+	header img {
+		display:none;
+	}
+}
