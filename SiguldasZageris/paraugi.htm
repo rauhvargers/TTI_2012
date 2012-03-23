@@ -3,20 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+body, html {height:100%;}
+body {
+	border:1px solid red;		
+}
+
+body {
+	padding:0px;
+	margin:0px;
+	border:1px solid red;
+	border-color:green;
+	border-width:5px;
+	border-style: ridge;
+	border-top-width:40px;
+	border-top:200px solid green;
+}
+
+/*An example of how wrapper elements can be used to limit full width of an element*/
+div.wrap {
+	width:50%;
+	float:left;	
+}
+div.content {	
+	margin:3px;
+	background-color:yellow;
+	padding:3px 20px;
+	border:1px solid red;
+}
+</style>
 </head>
 <body>
 	<h1>Produkcijas paraugi</h1>
-	<h2>Dēļi</h2>
-	<p>
-		<img src="images/softwood-timber.jpg" 
-			 alt="Re, kādi mums dēļi!" />
-	</p>	
-	<h2>Brusas</h2>
-	
-	<video 
-		src="/Volumes/Dati/Users/krissr/Movies/KR_RESTFul_20110121.mov"
-		autoplay="autoplay"
-		controls="controls">
-	</video>
+	<div class="wrap">
+		<div class="content">
+			<h2>Dēļi</h2>
+			<p>
+				Mums ir daži dēļi
+			</p>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="content">
+			<h2>Brusas</h2>
+			<p>
+				Mums ir dažas brusas
+			</p>
+		</div>
+	</div>
 </body>
 </html>

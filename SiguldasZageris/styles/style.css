@@ -1,4 +1,15 @@
 @charset "utf-8";
+@font-face {
+    font-family: 'ChunkFiveRegularKrissR';
+    src: url('../fonts/Chunkfive-webfont.eot');
+    src: url('../fonts/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Chunkfive-webfont.woff') format('woff'),
+         url('../fonts/Chunkfive-webfont.ttf') format('truetype'),
+         url('../fonts/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 /*BODY fona attēls attiecas uz visu lapu kopumā.*/
 body{
@@ -10,14 +21,52 @@ body{
 	background-position: 10px bottom; 
 	background-attachment: fixed;
 	background-color: #EED4AC;
-
 }
 
 h1 { 
 	color:red;
-} 
+	font-family: ChunkFiveRegularKrissR;
+	font-weight: normal;
+}
+
 
 h2, h3 {
 	color:green;
 	text-decoration: underline;
 }
+
+
+
+#q {
+	text-transform:uppercase;
+	
+}
+
+
+ul {
+	list-style-type: lower-greek;
+	list-style-image: url("data:image/gif;base64,R0lGODlhEAAQAMQfANpybPKrLv/516cpE+/IvP7xiv3tdeuOKP7yv/3oWf3mOvfXuf70q+BqIfvaNeiij8s2G/vcWeB8VOS7tfWlXve7i/S8b9SLg9s7RO5HcsVEHtdNH5JrGbZXT9M/HP///yH5BAEAAB8ALAAAAAAQABAAAAWr4CdSy0iJyymu1fEAmwc8R7WuxEYizHJ4pVElZ0EIjgwDBUKoUAgNz8HAOAoYCcevUXo0IpywABHmOBoPEeAALnAYboX5APhIPIGIocA3JBQKDgEQEhIQeXt9fw6ChB9rCRoDk5QHWnUfXhEWGJ2ejGgfExAQbBEAGRkSgQekEwAXBKUREQmLrQQXmB+yDQEBglEENyIXAxMPHhoPEwMXxB8dEyIdHSIT1iIhADs%3D");
+	
+	
+}
+
+P {
+
+	line-height: 1.2em;
+	
+	
+	}
+
+/*Different box-model properties*/	
+nav {
+	width:400px;
+	font-size:12px;
+	padding:20px;
+	background-color: yellow;
+	border: 2px solid green;
+	margin:25px;
+}	
+	
+	
+	
+	
