@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+/*lietosim fontu no Google Web Fonts*/
+@font-face {
+	font-family: 'Poiret One';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Poiret One'), local('PoiretOne-Regular'),
+		url('http://themes.googleusercontent.com/static/fonts/poiretone/v1/3Annd_XP-99FcGbOpm6fVL3hpw3pgy2gAi-Ip7WPMi0.woff')
+		format('woff');
+}
+
+body,html { /*Satram nevajadzētu liekas atkāpes no malām*/
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	background-image:
+		url("http://www.sxc.hu/pic/m/s/sa/sachyn/779838_light_wood_texture.jpg");
+}
+
+#main { /*Platums būs robežās no 400 līdz 800px, 
+		centīsies būt 80% no loga platuma*/
+	width: 80%;
+	max-width: 1000px;
+	min-width: 400px;
+	margin: 0 auto;
+	border-left: 1px solid #555;
+	border-right: 1px solid #555;
+	/*centrālās kolonnas baltums aizsegs BODY fona attēlu*/
+	background-color: white;
+}
+
+#main article {
+	/*Atkāpe pa vertikāli 0 pa horizontāli 20*/
+	padding: 0px 20px;
+}
+
+h1 { /*Te pielieto fontu, ko dabūjām ar @font-face*/
+	font-family: Poiret One, sans-serif;
+	margin-top:0px;
+	padding-top:20px;
+	padding-left:30px;	
+}
+
+header { 
+	background-color: #DCC8A8;
+	border-bottom:3px groove #ccc;
+	padding: 0px 0px 0px; /*augša sāni apakša*/
+	
+}
+	
+	p#searchbox{
+		float:right;
+		margin-right:20px;
+	}
+	
+	img#logo{
+		position:fixed;
+		left:20px;
+		top:20px;
+		border:1px solid #ccc;
+		border-radius:6px;
+	}
+
+
+nav ul {
+	overflow:auto;
+	list-style-type:none;
+	padding:10px;
+	margin:0px;
+	background-color:#E6D8C2;
+	border-top:1px solid #ccc;
+	clear:both;
+}
+nav li {
+	float:left;
+	
+}
+	nav li a {
+		display:block;
+		padding:5px;
+		padding-right:20px;
+		color:#555;
+		text-decoration: underline;
+		font-weight:bold;
+		font-family: Tahoma, Helvetica, Sans-serif;
+		
+	}
