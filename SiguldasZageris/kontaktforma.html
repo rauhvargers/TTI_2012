@@ -52,7 +52,7 @@
 
 			<p>
 				Komentārs
-				<textarea rows="10" cols="60" name="comment">
+				<textarea rows="10" cols="60" name="comment" id="commentLine">
 Sveiki!
 Ar jūsu firmu viss kārtībā!
 Paldies,
@@ -73,7 +73,56 @@ Jānis</textarea>
 			
 		</fieldset>
 
-		<input type="submit" value="Iesūtīt atsauksmi" />
+		<input type="submit" value="Iesūtīt atsauksmi" id="btnSubmit" />
+		
+		<script type="text/javascript">
+		
+			function add(a,b) {
+				return a+b;
+			}
+			
+			var bad=add;
+			var c = add(17, 19, 47, 55);
+			var d = bad(9,8);
+			
+
+			var subtract = function (a, b) {
+				return a-b;	
+			}
+			
+			var e = subtract(19,10);
+			
+			var myDate = {
+				year: 2012,
+				month: 05,
+				day : 11,
+				showIt : function() {
+							alert(this.year + "." + this.month + "." + this.day);
+						 }
+			};
+			
+			myDate.hours = 11;
+			myDate["minutes"] = 28;
+			
+			var currentyear = myDate.year;
+			//myDate.showIt();
+			
+			
+	
+			
+			document.body.style.backgroundColor = "yellow";
+			
+			var txt = document.getElementById("commentLine");
+			txt.value = "Šo rindu sabojāja JavaScripts.";
+			
+			var inputs = document.getElementsByTagName("input");
+			alert(inputs.length);
+			
+			var test = "";
+		</script>
+		
+		
 	</form>
+	
 </body>
 </html>
