@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-	<title>Saziņas forma</title>
+	<meta charset="UTF-8">
+	<title>Atsauksmes: saziņas forma</title>
+	<style type="text/css">
+		.valid {
+			border:1px solid green;
+			background-image: url("http://www.expandingyourhorizons.org/images/check_green.gif");
+			background-repeat: no-repeat;
+			background-position: right center;
+		}
+		.invalid {
+			border:1px solid red;
+			background-color: yellow;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
-	<h1>Saziņas forma</h1>
-	<form action="http://naivist.net/form">
+	<h1 id="mainHeading">Atsauksmes: saziņas forma</h1>
+	
+	<form action="http://naivist.net/form" id="contactForm">
 		<fieldset>
 			<legend>Informācija par jums</legend>
-			<p>Šeit jums nāksies atklāt nedaudz vairāk par sevi...</p>
+			<p id="formDescription">Šeit jums nāksies atklāt nedaudz vairāk par sevi...</p>
 
 			<p>
 				<label for="firstNameBox">Jūsu vārds:</label> 
-				<input name="firstname" type="text" id="firstNameBox" value="Jānis" size="80" />
+				<input class="valid" name="firstname" type="text" id="firstNameBox" value="Jānis" />
 			</p>
 			<p>
-				<label for="ageBox">Vecums:</label> <input type="password" name="age" id="ageBox" />
+				<label for="ageBox">Vecums:</label> 
+					<input class="invalid"  type="password" name="age" id="ageBox" />
 			</p>
 			<p>
 				Dzimums. 
@@ -35,7 +50,7 @@
 
 
 			<p>
-				<select name="replytype" multiple="multiple">
+				<select name="replytype">
 					<option>Lūdzu, izvēlieties informācijas veidu</option>
 					<optgroup label="Man patīk, bet...">
 						<option>Ierosinājums</option>
@@ -52,7 +67,7 @@
 
 			<p>
 				Komentārs
-				<textarea rows="10" cols="60" name="comment" id="commentLine">
+				<textarea rows="5" cols="20" name="comment" id="commentLine">
 Sveiki!
 Ar jūsu firmu viss kārtībā!
 Paldies,
@@ -76,49 +91,112 @@ Jānis</textarea>
 		<input type="submit" value="Iesūtīt atsauksmi" id="btnSubmit" />
 		
 		<script type="text/javascript">
-		
+			//demo, kā var izveidot savu funkciju
 			function add(a,b) {
 				return a+b;
 			}
 			
+			//funkcija pati ir dati, tāpēc to var piešķirt mainīgajam
 			var bad=add;
+			//kad tā piešķirta, ir vienalga, pēc kura vārda to izsauc
 			var c = add(17, 19, 47, 55);
 			var d = bad(9,8);
 			
-
+			//var uzreiz definēt anonīmu funkciju un piešķirt mainīgajam
 			var subtract = function (a, b) {
 				return a-b;	
 			}
 			
 			var e = subtract(19,10);
 			
+			//objeta veidošana. Atslēgas var likt pēdiņās, var nelikt
 			var myDate = {
 				year: 2012,
-				month: 05,
+				"month": 05,
 				day : 11,
 				showIt : function() {
 							alert(this.year + "." + this.month + "." + this.day);
 						 }
 			};
-			
-			myDate.hours = 11;
-			myDate["minutes"] = 28;
+			//kad objekts gatavs, to var papildināt
+			myDate.hours = 11; // punkta notācija
+			myDate["minutes"] = 28; //subskripta notācija
 			
 			var currentyear = myDate.year;
-			//myDate.showIt();
+			
+			//tā tiek izsaukta objekta metode
+			//myDate.showIt(); 
 			
 			
-	
+			////####Darbs ar DOM
 			
-			document.body.style.backgroundColor = "yellow";
+			//mainām esoša objekta stilus
+			//document.body.style.backgroundColor = "yellow";
 			
+			
+			//kā atrast elementu DOM kokā pēc ID
 			var txt = document.getElementById("commentLine");
 			txt.value = "Šo rindu sabojāja JavaScripts.";
 			
-			var inputs = document.getElementsByTagName("input");
-			alert(inputs.length);
 			
-			var test = "";
+			//meklējam elementus pēc HTML elementa vārda
+			var inputs = document.getElementsByTagName("input");
+			
+						
+			var firstNameBox = document.getElementById("firstNameBox");
+			
+			//kad objekts atrasts, var nomainīt CSS klasi 
+			//uzreiz pārmainīsies arī izskats
+			firstNameBox.className = "invalid";
+			
+			//caur .style atribūtu var mainīt atsevišķas CSS īpašības
+			firstNameBox.style.color = "#0000FF";
+			
+			//īpašību vērtības var aprēķināt arī dinamiski
+			//tikai jāaceras, ka beigās jādabū derīga CSS izteiksme
+			// piemēram, `width:450px` - nedrīkst aizmirst .px;
+			firstNameBox.style.width = (Math.random()*200 + 100) + "px";
+			
+			//izveidojam īsāku funkciju elementa atrašanai dokumentā - $, kā jQuery
+			var $ = function (id) {return document.getElementById(id);};
+			var formDescription = $("formDescription");
+			
+			
+			//kā tikt pie elementā esošās tekstuālās vērtības
+			// sintakse (a||b) ļauj dabūt pirmo no vērtībām, kas atšķiras no null
+			var actualText = formDescription.textContent || formDescription.innerText || "";
+			
+			//jauna elementa veidošana - vienmēr "document" objekts
+			var subHeading = document.createElement("H2");
+			
+			//elementa saturu var veidot ar createTextNode, bet tas sarežģīti
+			//var subHeadingText = document.createTextNode("Lūdzu, aizpildiet aptauju!");
+			//subHeading.appendChild(subHeadingText);
+			
+			//innerHTML ļauj daudz efektīvāk mainīt elementa saturu
+			subHeading.innerHTML = "<em>Lūdzu,</em> aizpildiet aptaujas anketu!";
+			
+			
+			var formElement = $("contactForm");
+			//jaunu elementu pievieno
+			// ar insertBefore - PIRMS kāda esoša elementa
+			//vai izmantojot appendChild - pēc pēdējā esošā 
+			formElement.parentElement.insertBefore(subHeading, formElement);
+			
+			
+			//funkcija, ko gribēsim piesaistīt notikumam
+			function textBoxFocused(e){
+				var event = e || window.event;
+				var target = event.target || event.srcElement; 				
+				target.style.backgroundColor = "red";
+			}
+			//vienu un to pašu funkciju var piesaistīt dažādiem notikumiem 
+			txt.onfocus = textBoxFocused;
+			firstNameBox.onfocus = textBoxFocused;
+			
+			//notikumu ķērājs var būt kā anonīma funkcija!
+			firstNameBox.onclick = function(){alert("Tagad vārda kastīte");};
+
 		</script>
 		
 		
