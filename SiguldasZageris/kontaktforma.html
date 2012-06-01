@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Atsauksmes: saziņas forma</title>
-	<style type="text/css">
-		.valid {
-			border:1px solid green;
-			background-image: url("http://www.expandingyourhorizons.org/images/check_green.gif");
-			background-repeat: no-repeat;
-			background-position: right center;
-		}
-		.invalid {
-			border:1px solid red;
-			background-color: yellow;
-			font-weight: bold;
-		}
-	</style>
+<meta charset="UTF-8">
+<title>Atsauksmes: saziņas forma</title>
 </head>
 <body>
 	<h1 id="mainHeading">Atsauksmes: saziņas forma</h1>
-	
+	<h2>Demonstrācija, kā darboties ar DOM</h2>
+	<h3>JavaScript kods - faila beigu daļā</h3>
 	<form action="http://naivist.net/form" id="contactForm">
 		<fieldset>
 			<legend>Informācija par jums</legend>
-			<p id="formDescription">Šeit jums nāksies atklāt nedaudz vairāk par sevi...</p>
+			<p id="formDescription">Šeit jums nāksies atklāt nedaudz vairāk
+				par sevi...</p>
 
 			<p>
-				<label for="firstNameBox">Jūsu vārds:</label> 
-				<input class="valid" name="firstname" type="text" id="firstNameBox" value="Jānis" />
+				<label for="firstNameBox">Jūsu vārds:</label> <input
+					name="firstname" type="text" id="firstNameBox" value="" />
 			</p>
 			<p>
-				<label for="ageBox">Vecums:</label> 
-					<input class="invalid"  type="password" name="age" id="ageBox" />
+				<label for="lastNameBox">Jūsu uzvārds:</label> <input
+					name="lasttname" type="text" id="lastNameBox" class="required"
+					value="" />
 			</p>
 			<p>
-				Dzimums. 
-				<input type="radio" name="gender" value="female" id="genderF"/>
-				<label for="genderF">Sieviete</label>
-				
-				 <input type="radio" name="gender" value="male" id="genderM"/> 
-				 <label for="genderM">Vīrietis</label>
+				<label for="ageBox">Vecums:</label> <input type="text" name="age"
+					id="ageBox" />
+			</p>
+			<p>
+				Dzimums. <input type="radio" name="gender" value="female"
+					id="genderF" /> <label for="genderF">Sieviete</label> <input
+					type="radio" name="gender" value="male" id="genderM" /> <label
+					for="genderM">Vīrietis</label>
 
 			</p>
 
@@ -50,7 +42,7 @@
 
 
 			<p>
-				<select name="replytype">
+				<select name="replytype" id="replytype">
 					<option>Lūdzu, izvēlieties informācijas veidu</option>
 					<optgroup label="Man patīk, bet...">
 						<option>Ierosinājums</option>
@@ -76,7 +68,8 @@ Jānis</textarea>
 
 			<p>
 				Vēlos līdz mūža beigām saņemt mēstules no jums. <input
-					type="checkbox" name="spamOk" value="yes" checked="checked" />
+					type="checkbox" name="spamOk" id="spamOk" value="yes"
+					checked="checked" />
 
 			</p>
 			<p>
@@ -85,13 +78,15 @@ Jānis</textarea>
 			<p>
 				Ekrāna attēls <input type="file" name="screenshot" />
 			</p>
-			
+
 		</fieldset>
 
+		<p id="errors" class=""></p>
+
 		<input type="submit" value="Iesūtīt atsauksmi" id="btnSubmit" />
-		
+
 		<script type="text/javascript">
-			//demo, kā var izveidot savu funkciju
+		//demo, kā var izveidot savu funkciju
 			function add(a,b) {
 				return a+b;
 			}
@@ -125,13 +120,13 @@ Jānis</textarea>
 			var currentyear = myDate.year;
 			
 			//tā tiek izsaukta objekta metode
-			//myDate.showIt(); 
+			myDate.showIt(); 
 			
 			
 			////####Darbs ar DOM
 			
 			//mainām esoša objekta stilus
-			//document.body.style.backgroundColor = "yellow";
+			document.body.style.backgroundColor = "yellow";
 			
 			
 			//kā atrast elementu DOM kokā pēc ID
@@ -150,7 +145,8 @@ Jānis</textarea>
 			firstNameBox.className = "invalid";
 			
 			//caur .style atribūtu var mainīt atsevišķas CSS īpašības
-			firstNameBox.style.color = "#0000FF";
+			firstNameBox.style.backgroundColor = "#0000FF";
+			firstNameBox.style.color = "white";
 			
 			//īpašību vērtības var aprēķināt arī dinamiski
 			//tikai jāaceras, ka beigās jādabū derīga CSS izteiksme
@@ -198,9 +194,9 @@ Jānis</textarea>
 			firstNameBox.onclick = function(){alert("Tagad vārda kastīte");};
 
 		</script>
-		
-		
+
+
 	</form>
-	
+
 </body>
 </html>

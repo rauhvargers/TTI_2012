@@ -9,6 +9,13 @@
 		format('woff');
 }
 
+* {
+	margin:0px;
+	padding:0px;
+	font-family: Arial, sans-serif;
+	
+}
+
 body,html { /*Satram nevajadzētu liekas atkāpes no malām*/
 	padding: 0px;
 	margin: 0px;
@@ -52,7 +59,13 @@ header {
 	
 	p#searchbox{
 		float:right;
-		margin-right:20px;
+		margin-right:20px; 
+		/* position:fixed;
+		bottom:0px;
+		left:0px;
+		width:100%;
+		margin:0px;
+		background-color:yellow; */
 	}
 	
 	img#logo{
@@ -75,8 +88,10 @@ nav ul {
 }
 nav li {
 	float:left;
-	
 }
+
+	
+
 	nav li a {
 		display:block;
 		padding:5px;
@@ -85,5 +100,31 @@ nav li {
 		text-decoration: underline;
 		font-weight:bold;
 		font-family: Tahoma, Helvetica, Sans-serif;
-		
 	}
+	
+	nav li a:first-letter{
+		color:green !important;
+	}
+	
+	nav li a:first-letter{
+		color:blue;
+	}
+	
+	nav li a:visited {
+		color:#AAA;
+	}
+	
+	nav li a:hover {
+		text-decoration: none;
+		background-color: yellow;
+	}
+	
+	nav li a:active {
+		color:red;
+	}	
+	
+	
+.warning {
+	border:1px solid red;
+	
+}

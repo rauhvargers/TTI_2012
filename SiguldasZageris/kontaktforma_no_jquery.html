@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Atsauksmes: saziņas forma</title>
+<style type="text/css">
+/*Šīs klases tiek lietotas, lai vizuāli uzsvērtu,
+			ka elements aizpildīts pareizi/nepareizi */
+.valid {
+	border: 1px solid green;
+	background-image:
+		url("http://www.expandingyourhorizons.org/images/check_green.gif");
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.error {
+	border: 1px solid red;
+	background-color: yellow;
+	font-weight: bold;
+}
+</style>
+<script type="text/javascript">
+	//īsais pieraksts "getElementById"	
+	var $ = function(id) {
+		return document.getElementById(id);
+	};
+
+	//sagaida, kad ielādējusies lapa, tad liks klāt notikumu ķērājus 
+	window.onload =	function (){
+		//ķers SUBMIT pogas nospiešanu
+		var btnSubmit = $("btnSubmit");
+
+		btnSubmit.onclick = function() {
+			//poga nospiesta, apstaigā visus lauciņus 
+			//pēta to vērtības
+			var errors = [];
+
+			var txtName = $("firstNameBox");
+			if (txtName.value == "") {
+				errors.push("Jānorāda vārds (īstais)!");
+			}
+
+			var checkSpam = $("spamOk");
+			if (!checkSpam.checked) {
+				errors.push("Jāgrib saņemt spamu!");
+			}
+
+			var replytype = $("replytype");
+			if (replytype.selectedIndex == 0) {
+				errors.push("Izvēlieties atbildes tipu!");
+			}
+
+			var ageBox = $("ageBox");
+			var age = ageBox.value;
+			if (age == "") {
+				errors.push("Ievadiet vecumu!");
+
+			} else {
+				age = Number(age);
+				if (isNaN(age)) {
+					errors.push("Vecums nav skaitliska vērtība!");
+				} else {
+					if ((age < 0) || (age > 154)) {
+						errors.push("Tu esi pārāk vecs vai jauns");
+					}
+
+				}
+			}
+			//ja "errors" masīvs ir netukšs, tad ir bijusi kāda kļūda
+			//to parāda un darbu neturpinās
+			if (errors.length > 0) {
+				$("errors").innerHTML = errors.join('<br />');
+				$("errors").className="error";
+				return false;
+			}
+		}
+
+		//dinamiskā notikumu apstrāde
+		//neļausim ievadīt sliktas vērtības "age" lodziņā
+		var ageBox = $("ageBox");
+		ageBox.onchange = ageChange;
+		ageBox.onkeyup = ageChange;
+
+		function ageChange() {
+			var age = Number(ageBox.value);
+			if (isNaN(age)) {
+				ageBox.className = "error";
+			} else {
+				ageBox.className = "valid";
+			}
+
+		}
+	}
+</script>
+</head>
+<body>
+	<h1 id="mainHeading">Atsauksmes: saziņas forma</h1>
+	<h2>Pārbaudes, izmantojot vienkāršu JavaScript, bez jQuery</h2>
+	<form action="http://naivist.net/form" id="contactForm">
+		<fieldset>
+			<legend>Informācija par jums</legend>
+			<p id="formDescription">Šeit jums nāksies atklāt nedaudz vairāk
+				par sevi...</p>
+
+			<p>
+				<label for="firstNameBox">Jūsu vārds:</label> <input
+					name="firstname" type="text" id="firstNameBox" value="" />
+			</p>
+			<p>
+				<label for="lastNameBox">Jūsu uzvārds:</label> <input
+					name="lasttname" type="text" id="lastNameBox" class="required"
+					value="" />
+			</p>
+			<p>
+				<label for="ageBox">Vecums:</label> <input type="text" name="age"
+					id="ageBox" />
+			</p>
+			<p>
+				Dzimums. <input type="radio" name="gender" value="female"
+					id="genderF" /> <label for="genderF">Sieviete</label> <input
+					type="radio" name="gender" value="male" id="genderM" /> <label
+					for="genderM">Vīrietis</label>
+
+			</p>
+
+		</fieldset>
+
+		<fieldset>
+			<legend>Ko jūs vēlaties mums pateikt</legend>
+
+
+			<p>
+				<select name="replytype" id="replytype">
+					<option>Lūdzu, izvēlieties informācijas veidu</option>
+					<optgroup label="Man patīk, bet...">
+						<option>Ierosinājums</option>
+					</optgroup>
+
+					<optgroup label="Man te nekas nepatīk!">
+						<option>Sūdzība</option>
+						<option>Sarkastiska piezīme</option>
+						<option>Lamas</option>
+					</optgroup>
+
+				</select>
+			</p>
+
+			<p>
+				Komentārs
+				<textarea rows="5" cols="20" name="comment" id="commentLine">
+Sveiki!
+Ar jūsu firmu viss kārtībā!
+Paldies,
+Jānis</textarea>
+			</p>
+
+			<p>
+				Vēlos līdz mūža beigām saņemt mēstules no jums. <input
+					type="checkbox" name="spamOk" id="spamOk" value="yes"
+					checked="checked" />
+
+			</p>
+			<p>
+				<input type="date" />
+			</p>
+			<p>
+				Ekrāna attēls <input type="file" name="screenshot" />
+			</p>
+
+		</fieldset>
+
+		<p id="errors" class=""></p>
+
+		<input type="submit" value="Iesūtīt atsauksmi" id="btnSubmit" />
+	</form>
+
+</body>
+</html>
