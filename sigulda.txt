@@ -14,7 +14,8 @@ Andra Liepiņa vadībā no neliela gatera SIA "Siguldas Zāģeris" ir
 kļuvis par vienu no lielākajiem un veiksmīgākajiem
 kokmateriālu ražotājiem Latvijā. Uzņēmuma produkciju var apskatīt 
 iegādāties specializētajā veikalā "Priede".
-			
+
+Demo, test test.
 
 ##Saražotais
 
